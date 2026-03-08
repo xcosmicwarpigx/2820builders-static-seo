@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xcosmicwarpigx.github.io/2820builders-static-seo/sitemap.xml

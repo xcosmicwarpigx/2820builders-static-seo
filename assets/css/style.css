@@ -1,0 +1,395 @@
+/* 
+Theme Name: Hello Elementor Child
+Theme URI: https://github.com/elementor/hello-theme-child/
+Description: Hello Elementor Child is a child theme of Hello Elementor, created by Elementor team
+Author: Elementor Team
+Author URI: https://elementor.com/
+Template: hello-elementor
+Version: 2.0.0
+Text Domain: hello-elementor-child
+License: GNU General Public License v3 or later.
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Tags: flexible-header, custom-colors, custom-menu, custom-logo, editor-style, featured-images, rtl-language-support, threaded-comments, translation-ready
+*/
+
+/* Add fonts via CSS and not Elementor because Elementor doesn't currently support variable fonts */
+body {
+	font-family: "Sora", sans-serif !important;
+  	font-optical-sizing: auto;
+	overflow-x: hidden !important; /* Needed to not show the extra slides of the carousel */
+}
+
+html {
+	overflow-x: hidden !important; /* Needed to not show the extra slides of the carousel */
+}
+
+.elementor-nav-menu .elementor-item {
+	font-family: "Sora", sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Literata", serif !important;
+	font-optical-sizing: auto;
+}
+
+.sora h1, .sora h2, .sora h3, .sora h4, .sora h5, .sora h6 {
+	font-family: "Sora", sans-serif !important;
+}
+
+/* vw padding for containers */
+
+.cont {
+	padding-left: 5vw !important;
+	padding-right: 5vw !important;
+}
+
+.cont-10 {
+	padding-left: 10vw !important;
+	padding-right: 10vw !important;
+}
+
+/* CSS for the "Let's Talk" button in the menu */
+#talk .elementor-button-icon {
+	font-size: 1.5rem;
+}
+
+#talk .elementor-button-content-wrapper {
+	white-space: nowrap;
+	justify-content: initial;
+	max-width: 21px;
+	transition: 0.4s max-width ease-in-out;
+	overflow-x: hidden;
+}
+
+#talk .elementor-button:hover .elementor-button-content-wrapper {
+	max-width: 135px;
+}
+
+/* Sticky header */
+
+.sticky-header {
+	--header-height: 100px;
+	--shrink-header-to: 0.6;
+	--transition: .45s cubic-bezier(.4, 0, .2, 1);
+	background-color: transparent;
+	transition: background-color var(--transition),
+				backdrop-filter var(--transition),
+				box-shadow var(--transition);
+}
+
+/***
+* Sticky header activated
+*/
+.sticky-header.elementor-sticky--effects {
+	background-color: rgba(0, 0, 0, .9);
+	box-shadow: 0px 4px 33px 1px rgba(0, 0, 0, .07);
+	-webkit-backdrop-filter: saturate(180%) blur(20px);
+	backdrop-filter: saturate(180%) blur(20px);
+}
+.sticky-header > .e-con-inner {
+	transition: padding-top var(--transition), padding-bottom var(--transition);
+}
+.sticky-header.elementor-sticky--effects > .e-con-inner {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+/***
+* Shorter header on mobile (70px instead of 100px)
+*/
+@media only screen and (max-width: 767px) {
+	.sticky-header.elementor-sticky--effects > .e-con-inner {
+		padding-top: 0.75rem;
+		padding-bottom: 0.75rem;
+	}
+}
+
+/* Mobile menu */
+.elementor-menu-toggle {
+	z-index: 9999;
+}
+
+.elementor-nav-menu--toggle .elementor-menu-toggle:not(.elementor-active) + .elementor-nav-menu__container {
+	transform: translateY(-100%) !important;
+}
+
+.elementor-nav-menu--toggle .elementor-menu-toggle.elementor-active + .elementor-nav-menu__container {
+	transform: translateY(0) !important;
+}
+
+.elementor-nav-menu--dropdown {
+	height: 100dvh !important;
+	max-height: 100dvh !important;
+	top: 0 !important;
+	position: fixed !important;
+	margin-top: 0 !important;
+}
+
+.elementor-nav-menu--dropdown .elementor-nav-menu {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.elementor-nav-menu--dropdown li {
+	opacity: 0;
+    transform: translate3d(0, 20px, 0);
+	transition: transform 0.5s linear, opacity 0.5s linear;
+}
+
+.elementor-active ~ .elementor-nav-menu--dropdown li {
+	opacity: 1;
+    transform: none;
+}
+
+.elementor-active ~ .elementor-nav-menu--dropdown li:first-child {	transition-delay: 200ms; }
+.elementor-active ~ .elementor-nav-menu--dropdown li:nth-child(2) {	transition-delay: 300ms; }
+.elementor-active ~ .elementor-nav-menu--dropdown li:nth-child(3) {	transition-delay: 400ms; }
+.elementor-active ~ .elementor-nav-menu--dropdown li:nth-child(4) {	transition-delay: 500ms; }
+.elementor-active ~ .elementor-nav-menu--dropdown li:nth-child(5) {	transition-delay: 600ms; }
+.elementor-active ~ .elementor-nav-menu--dropdown li:nth-child(6) {	transition-delay: 700ms; }
+
+/* Show overflow slides in slider */
+
+.swiper {
+	overflow: initial;
+	width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
+.swiper-slide .e-con-inner {
+	aspect-ratio: 16/9;
+}
+
+@media screen and (max-width: 768px) {
+	.swiper-slide .e-con-inner {
+		aspect-ratio: initial;
+	}
+}
+
+/* Slider styles */
+
+@media screen and (min-width: 1301px) {
+	.carousel > .elementor-widget-container {
+  		margin: 0px -70px 0px -70px !important;
+	}
+	
+	.carousel .swiper-pagination {
+		--e-n-carousel-dots-horizontal-offset: -70px !important;
+	}
+	
+	.carousel .elementor-swiper-button-prev {
+		--e-n-carousel-arrow-prev-left-position: 30px !important;
+	}
+	
+	.carousel .elementor-swiper-button-next {
+		--e-n-carousel-arrow-next-right-position: -90px !important;
+	}
+}
+
+.elementor-swiper-button {
+	font-size: 0.875rem !important;
+}
+
+.elementor-swiper-button svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.elementor-swiper-button::after {
+	content: "";
+	width: 46px;
+	height: 46px;
+	border: 1px solid black;
+	border-radius: 99px;
+}
+
+/* Contact form */
+
+.contact label {
+	width: 100%;
+}
+
+.contact input[type="text"], .contact input[type="email"], .contact input[type="tel"] {
+	margin-top: 10px;
+	border-radius: 12px;
+	min-height: 48px;
+}
+
+
+.contact textarea {
+	margin-top: 10px;
+	border-radius: 12px;
+	max-height: 11.25rem;
+	padding: 0.75rem 1rem 1rem;
+}
+
+.contact .contact-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.375rem;
+	margin-bottom: 0.875rem;
+}
+
+.contact .wpcf7-radio {
+	display: block;
+	columns: 2;
+}
+
+.contact .wpcf7-list-item {
+	display: block;
+	margin-left: 0;
+	margin-bottom: 0.75rem;
+}
+
+.contact input[type="radio"] {
+	position: absolute;
+	visibility: hidden;
+	left: 9999px;
+}
+
+.contact .wpcf7-list-item-label::before {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #ffffff;
+	border: 1px solid #000000;
+	border-radius: 100%;
+	height: 20px;
+	width: 20px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto 0;
+	z-index: 5;
+	transition: border .3s linear;
+}
+
+.contact .wpcf7-list-item-label::after {
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: #ffffff;
+	border: 6px solid #D65F0D;
+	border-radius: 100%;
+	height: 20px;
+	width: 20px;
+	top: 0;
+	left: 0px;
+	bottom: 0;
+	margin: auto 0;
+	z-index: 5;
+	opacity: 0;
+	transition: opacity .3s linear;
+}
+
+.contact input[type=radio]:checked ~ .wpcf7-list-item-label::before {
+	border-color: #D65F0D;
+}
+
+.contact input[type=radio]:checked ~ .wpcf7-list-item-label::after {
+	opacity: 1;
+}
+
+.contact .wpcf7-list-item {
+	position: relative;
+}
+
+.contact .wpcf7-list-item-label {
+	padding-left: 2rem;
+	display: block;
+	line-height: 24px;
+}
+
+.contact .wpcf7-not-valid-tip {
+	margin-top: 10px;
+}
+
+.contact .contact-radio .wpcf7-form-control-wrap {
+	margin-top: 1.25rem;
+	display: block;
+	margin-bottom: 3rem;
+}
+
+.contact input[type="submit"] {
+	background-color: #000;
+	border: 1px solid #000;
+	padding: 12px 24px;
+	margin-top: 10px;
+}
+
+.contact input[type="submit"]:hover, .contact input[type="submit"]:active, .contact input[type="submit"]:focus {
+	background-color: transparent;
+	color: #000;
+}
+
+.wpcf7 form .wpcf7-response-output {
+	margin: 0;
+	padding: 1rem 0 0 0;
+	border: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.contact .contact-row {
+		grid-template-columns: 1fr;
+	}
+	
+	.contact .wpcf7-radio {
+		columns: initial;
+	}
+}
+
+/* Fix for the phone icon appearing too large */
+.contact-icons li:nth-child(2) svg {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+/* Styles for FAQs section */
+.faqs h4 {
+	color: #D65F0D;
+	font-family: "Sora", sans-serif !important;
+	font-size: 18px;
+	font-weight: 700;
+	margin-top: 3.25rem;
+	margin-bottom: 1.25rem;
+}
+
+.faqs h4:first-child {
+	margin-top: 0;
+}
+
+/* Custom, more subtle animations replacing Elementor's */
+@keyframes fadeInUp1 {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fadeInUp {
+  animation-name: fadeInUp1 !important;
+}
+
+@keyframes fadeInDown1 {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.fadeInDown {
+  animation-name: fadeInDown1 !important;
+}
